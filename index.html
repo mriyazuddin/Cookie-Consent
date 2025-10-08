@@ -3,14 +3,226 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function getCookie(cookieName) {
+        // If cookie exists returns its value, else returns null
+        cookieName += "=";
+        let cookieValue = null;
+        let cookies = decodeURIComponent(document.cookie);
+        cookies = cookies.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+          let cookieItem = cookies[i].trim();
+          if (cookieItem.indexOf(cookieName) == 0) {
+            cookieValue = cookieItem.substring(cookieName.length);
+            break;
+          }
+        }
+        return cookieValue;
+      }
+
+      function setTheme(theme) {
+        let classes = document.documentElement.classList;
+        let themeToRemove = null;
+
+        if (classes.length > 0) {
+          theme == "dark"
+            ? (themeToRemove = "light")
+            : (themeToRemove = "dark");
+          for (className of classes) {
+            if (className == themeToRemove)
+              document.documentElement.classList.remove(themeToRemove);
+          }
+        }
+        document.documentElement.classList.add(theme);
+      }
+
+      function getSystemTheme() {
+        const darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
+        return darkTheme.matches ? "dark" : "light";
+      }
+
+      let theme = getCookie("theme");
+      let consent = getCookie("consent");
+
+      if (consent == null || theme == null) theme = getSystemTheme();
+      setTheme(theme);
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>Cookie Consent Banner</title>
   </head>
   <body>
-    <div id="cookie-consent" class="banner">
-      <button class="btn btn-close">X</button>
-      <p>We use cookies to improve your experience.</p>
-      <button class="btn btn-okay">Okay</button>
-    </div>
+    <header>
+      <div class="theme">
+        <button
+          id="light"
+          class="btn-theme btn-light material-symbols-outlined"
+        >
+          light_mode
+        </button>
+        <button id="dark" class="btn-theme btn-dark material-symbols-outlined">
+          dark_mode
+        </button>
+      </div>
+      <h1>Cookie Banner Demo</h1>
+    </header>
+    <main>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis a
+        beatae iste hic nostrum. Atque dolore aspernatur minus reiciendis!
+        Maiores odio veniam tempore sint minima dolor explicabo, quos libero
+        harum! Quisquam sed obcaecati officiis hic. Porro, earum laudantium
+        saepe aperiam magni rerum voluptates ipsum quis dolores dolorum
+        praesentium veniam quam hic minima architecto iste ab deserunt quos
+        soluta! Mollitia, tenetur? Fugiat quas voluptate neque amet fugit
+        reprehenderit minus non soluta veniam, sed, facere necessitatibus natus
+        quisquam repellat. Amet odio ea id quas, dolores ratione quibusdam,
+        dolorum earum facere neque reprehenderit! Nesciunt quis praesentium
+        sequi neque totam obcaecati soluta. Nemo voluptas numquam sapiente
+        suscipit mollitia beatae ullam ab placeat quae, magnam ipsa itaque
+        recusandae accusantium architecto dicta harum tempore tempora et? Vel
+        quos distinctio, eaque corrupti dolores quibusdam iste commodi officia,
+        vero soluta temporibus, eos quisquam dolore? Rerum, cum possimus aperiam
+        optio ducimus eaque, neque in distinctio facilis officia quo.
+        Reiciendis.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo velit,
+        excepturi neque numquam deserunt quibusdam maiores vel fuga expedita
+        pariatur hic cupiditate et incidunt corporis provident. Autem minima
+        enim ad. Numquam cum consequuntur saepe, tempore sed provident modi
+        omnis repellat rem esse sit, sequi veniam voluptas facilis, hic
+        quibusdam nobis ratione quidem exercitationem perspiciatis minus quia
+        optio. Est, iste blanditiis? Obcaecati, aliquid. Quos deleniti veritatis
+        maxime recusandae labore vitae consectetur consequatur magni, totam
+        voluptas illo ipsam ducimus aut mollitia fugit eum alias sapiente
+        nesciunt! Ullam, natus. Hic eum corporis nemo. Velit omnis sed
+        dignissimos sit harum veniam eos, non impedit, sint alias deleniti
+        quaerat eum consequuntur incidunt ad consequatur nam esse blanditiis
+        odit error sapiente expedita. Assumenda tenetur ex aliquid.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A nisi quasi
+        veritatis corrupti architecto reiciendis aliquam quidem aut laborum
+        doloribus explicabo itaque totam, iusto doloremque maiores dolor odio
+        quaerat beatae? Nulla repellendus sunt praesentium, obcaecati quae sint,
+        qui non esse rem a atque reiciendis tempora vero incidunt ducimus totam
+        voluptates. Error consectetur assumenda, inventore vel optio qui
+        dignissimos obcaecati libero? Dolore minima blanditiis ea numquam
+        quibusdam nihil fugit? Tempore voluptate dolorum earum optio corrupti
+        autem? Corrupti in nisi optio placeat et iusto aperiam, maiores
+        voluptatibus delectus mollitia aliquam, modi accusamus! Fuga in
+        voluptatibus blanditiis ut obcaecati accusamus possimus impedit sunt
+        unde. Totam nisi voluptas vitae vel sequi praesentium ullam fugiat nulla
+        dolore, ea eveniet aliquam in quo eius sit maxime? Nobis saepe hic
+        repellendus repudiandae, sint veritatis eaque laboriosam optio error
+        eius ipsum consequatur quas totam, facere ad, esse facilis minus eos
+        deleniti accusamus dolore provident! Repellendus, quae deserunt.
+        Commodi. Tenetur modi corrupti ad minus assumenda odio est distinctio
+        fuga pariatur. Eius, enim voluptates saepe eaque, rerum adipisci laborum
+        tempora eos deserunt dolores incidunt id quidem necessitatibus et
+        aliquid cupiditate.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+        voluptatum, neque nam magnam id ullam est explicabo aut tempora maxime
+        facere iure voluptates laborum nesciunt natus, officia doloremque fuga
+        totam? Impedit consequuntur hic a voluptatibus consequatur commodi
+        adipisci error dicta eaque, amet sunt nulla? Est officiis itaque
+        cupiditate veritatis, minima repellat labore placeat rerum accusantium
+        dolores, quas iure soluta culpa. Optio dolorem obcaecati, minus nisi
+        nesciunt itaque cum accusantium sed omnis quam cumque est rem eius culpa
+        aspernatur, voluptatibus molestiae repellendus odio. Aspernatur ducimus
+        quis deserunt optio reprehenderit itaque quas.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+        molestiae aliquid iste possimus. Suscipit sunt dignissimos pariatur
+        deleniti. Commodi culpa repudiandae quae corrupti iure quidem est nulla
+        laborum ipsum rerum! Culpa laboriosam rem beatae nulla. Magni voluptatum
+        suscipit accusamus quo ducimus quam sed nemo, ipsum molestiae nihil,
+        exercitationem id, consectetur mollitia libero cupiditate nostrum
+        deserunt tenetur dolore necessitatibus neque maiores! Dignissimos
+        corrupti illo unde aut explicabo, quis necessitatibus consequatur!
+        Cupiditate magnam, maiores ullam, est amet, quae repellat et dolore qui
+        ducimus eligendi a quibusdam sapiente quos autem. Enim, blanditiis.
+        Ullam. Nihil tempore iusto ipsa aperiam repellendus illum, quasi id
+        suscipit temporibus similique odio dignissimos nemo asperiores inventore
+        corrupti recusandae beatae? Laboriosam animi molestiae possimus iusto
+        autem tenetur officia. Voluptatum, odio? Unde minus, ducimus deserunt
+        aperiam nihil cumque corporis ratione, cupiditate repellat facilis odit
+        vero velit, rem eos similique sed dicta laudantium quisquam qui
+        quibusdam! Unde aut accusamus eius nesciunt recusandae? Natus,
+        blanditiis facilis. Qui placeat sequi cupiditate numquam aperiam. Neque
+        dolor aut eos illo quidem laudantium incidunt quos deserunt, est quae
+        voluptatibus sequi iusto omnis placeat nesciunt veritatis aliquid
+        dignissimos. Itaque aliquid neque explicabo corrupti architecto nobis
+        libero ipsam rem, provident perferendis animi illo. Asperiores incidunt
+        a omnis, ea quidem dolores in autem quia sed quam, eum ut nostrum
+        exercitationem!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut provident
+        incidunt nihil tempora non, quas aspernatur veritatis saepe mollitia
+        quos maxime et delectus aliquam qui repellendus officia. Non, aut
+        exercitationem? Porro neque dicta soluta, eos velit necessitatibus
+        accusamus at provident in dolorum placeat ab ex aliquam reiciendis,
+        labore nesciunt corporis ipsam similique! Modi asperiores fuga labore,
+        soluta voluptates exercitationem itaque. Quaerat ab libero quos.
+        Laboriosam eligendi veniam, aspernatur ipsam nobis commodi temporibus
+        fuga culpa tempore maiores quas. Aliquid voluptate beatae error omnis
+        vitae laboriosam aliquam, magnam sint incidunt, animi officia. Magnam,
+        libero maxime! Deleniti repellat aliquam officiis aut asperiores totam
+        necessitatibus temporibus eveniet maxime tempore dolor, provident iste
+        dolores sit corrupti non est quia, aspernatur, a modi excepturi eligendi
+        reprehenderit. Sapiente beatae mollitia magnam reprehenderit debitis
+        voluptas temporibus harum blanditiis consectetur. Dicta veritatis
+        voluptatibus, quia amet molestias nisi ratione reprehenderit harum
+        beatae odio eaque assumenda quaerat molestiae unde ex omnis. Nam, eaque
+        repellat impedit, temporibus dolor at dolorum cumque veritatis est
+        assumenda voluptas, aliquam earum reiciendis dolores delectus
+        reprehenderit itaque dignissimos sunt accusamus atque voluptatibus
+        perferendis? Quasi harum expedita sapiente. Minus molestiae ex
+        voluptatem, minima eveniet quo qui laborum vitae deserunt repellat eaque
+        molestias corporis libero ratione, cum aperiam aliquid? Excepturi,
+        mollitia error amet corrupti eius nemo ipsum ab aliquam?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, itaque
+        cum! Vero nesciunt totam voluptatum doloremque quia, corporis,
+        blanditiis mollitia deleniti est debitis dolorem. Consequuntur earum qui
+        error corrupti saepe. Sint quasi voluptate quis, vero maxime odit dolor
+        mollitia adipisci delectus fugiat totam rem hic magni et, nobis
+        officiis? Iusto animi libero deserunt? Quas magnam, itaque doloribus
+        quae veritatis voluptatem. Est quidem nisi eos incidunt ipsum mollitia
+        eaque hic nemo, dolores quod laboriosam aliquam! Incidunt dolorum rerum
+        error, officiis necessitatibus ad, possimus eligendi dolorem libero
+        alias veniam numquam. Excepturi, veniam! Eligendi nisi voluptatum
+        voluptatem provident veniam non ipsum nemo adipisci numquam quae quis
+        porro nam in, sint assumenda ex inventore doloremque iure! Deserunt
+        obcaecati architecto alias, temporibus animi in enim.
+      </p>
+    </main>
+    <aside>
+      <div
+        id="cookie-banner"
+        class="banner"
+        role="region"
+        aria-label="cookie-consent"
+      >
+        <div class="banner-header">
+          <button id="close" class="btn btn-close">X</button>
+        </div>
+        <span class="material-symbols-outlined">cookie</span>
+        <p>We use cookies to improve your experience.</p>
+        <button id="accept" class="btn btn-accept">Accept</button>
+        <div aria-live="polite" class="visually-hidden"></div>
+      </div>
+    </aside>
+    <script src="cookie-consent.js"></script>
   </body>
 </html>
